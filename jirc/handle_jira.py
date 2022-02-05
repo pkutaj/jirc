@@ -27,5 +27,5 @@ def create_card(issue_type):
     issue_dict["url"] = jira_card_url
     issue_dict["key"] = new_issue.key
     pp(issue_dict)
-    if(input("Browser? (y/N):")) == "y" or "Y":
+    if (input("Browser? (y/N):")) == ("y" or "Y"):
         webbrowser.open(jira_card_url)
