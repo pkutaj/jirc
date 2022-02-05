@@ -5,7 +5,7 @@
 ![Visual Studio Code Badge](https://img.shields.io/badge/Visual%20Studio%20Code-007ACC?logo=visualstudiocode&logoColor=fff&style=flat)
 
 The aim of this code🎯 is to allow you to create a new JIRA card without leaving terminal. It also asks if you want to open the new card in the default browser. 
-Note that you run this project as an executable directory. 
+Note that you run this project as an executable directory. Set it as an alias for shell and you can start just throwing cards in the project with issue type selected from your shell. 
 
 ```
 python jirc
