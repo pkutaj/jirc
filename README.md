@@ -4,9 +4,15 @@
 ![Python Badge](https://img.shields.io/badge/Python-3776AB?logo=python&logoColor=fff&style=flat)
 ![Visual Studio Code Badge](https://img.shields.io/badge/Visual%20Studio%20Code-007ACC?logo=visualstudiocode&logoColor=fff&style=flat)
 
-The aim of this code🎯 is to
+The aim of this code🎯 is to allow you to create a new JIRA card without leaving terminal. It also asks if you want to open the new card in the default browser. 
+Note that you run this project as an executable directory. 
+
+```
+python jirc
+```
 
 ### 1. demo
+
 
 ### config
 * Initially, you need the 4 values from Jira
@@ -20,16 +26,4 @@ Project     | first 3 letters of project name                             | `DEV
 
 * The script checks for the existence of `./jirc/config.json` 
 * If the file does not exist it will prompt you to enter the required information
-
-#### 1.1. environmental variables
-* you need the following envirnomental variables
-
-Name | Example Value
------|--------------
-<>   | <>
-
-### 2. instructions
-* 
-
-### 3. sources
-* 
+ 
