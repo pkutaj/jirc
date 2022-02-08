@@ -1,5 +1,5 @@
-# jirc: just a new jira card without leaving terminal
-[![forthebadge](https://forthebadge.com/images/badges/just-plain-nasty.svg)](https://forthebadge.com)
+ # jirc
+![FOR](https://img.shields.io/badge/FOR-TERMINAR_DWELLERS-magenta?style=for-the-badge&logo=JIRA&logoColor=magenta)
 
 ![Python Badge](https://img.shields.io/badge/Python-3776AB?logo=python&logoColor=fff&style=flat)
 ![Visual Studio Code Badge](https://img.shields.io/badge/Visual%20Studio%20Code-007ACC?logo=visualstudiocode&logoColor=fff&style=flat)
