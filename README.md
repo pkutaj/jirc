@@ -23,7 +23,7 @@ Value       | Location                                                    | Exam
 Jira Server | Browser URL                                                 | `https://foo.atlassian.net`
 User        | email address / jira account                                | `pkutaj@gmail.com`
 Token       | https://id.atlassian.com/manage-profile/security/api-tokens | `abcdefGHiJKLMnOprStu0W5Z`
-Project     | first 3 letters of project name                             | `DEV`
+Project     | Name of a Jira Project                                      | `DEV`
 
 * The script checks for the existence of `./jirc/config.json` 
 * If the file does not exist it will prompt you to enter the required information
