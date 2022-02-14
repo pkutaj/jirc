@@ -13,6 +13,7 @@ python jirc
 
 ### 1. demo
 
+![jirc_gif_demo](./assets/jirc_demo.gif)
 
 ### config
 * Initially, you need the 4 values from Jira
