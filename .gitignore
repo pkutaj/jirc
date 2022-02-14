@@ -2,3 +2,5 @@
 /tests
 *test.py
 config.json
+*.pyc
+
