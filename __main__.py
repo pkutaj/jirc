@@ -6,8 +6,13 @@ def main():
     jira_project = get_jira_projects()
     for i, issue in enumerate(jira_project.issueTypes):
         print(i, issue.name)
-    create_card(
-        issue_type=jira_project.issueTypes[int(input("Enter Number: "))].name)
+    issue_or_project = input("Enter number OR 'c' for project change: ")
+    if issue_or_project == ('c' or 'C'):
+        change_jira_project()
+        main()
+    else:
+        create_card(
+            issue_type=jira_project.issueTypes[int(issue_or_project)].name)
 
 
 if __name__ == "__main__":

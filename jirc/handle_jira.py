@@ -1,13 +1,21 @@
 from jirc.logger import print_JIRA_project
 from jira import JIRA
 from jirc.handle_config_file import get_config
+import json
 from pprint import pprint as pp
 import webbrowser
 
 config = get_config()
+config_file_path = "./jirc/jirc/config.json"
 jira_server = {'server': config["jira_server"]}
 jira = JIRA(options=jira_server, basic_auth=(
     config["jira_user"], config["jira_token"]))
+
+
+def change_jira_project():
+    config["jira_project"] = input("Enter Jira Project Name:")
+    with open(config_file_path, mode="wt", encoding="utf-8") as config_file:
+        json.dump(config, config_file)
 
 
 def get_jira_projects():
