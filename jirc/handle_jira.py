@@ -1,10 +1,15 @@
 from jirc.logger import print_JIRA_project
-from jira import JIRA
 from jirc.handle_config_file import get_config
 import json
 from pprint import pprint as pp
+import sys
 import webbrowser
-
+try:
+    from jira import JIRA
+except ImportError as e:
+    print(e, file=sys.stderr)
+    sys.exit("\tYou ran into the problem of importing the required Jira module.\n"
+             "\tRunning >>> pip install -r requirements.txt <<< can fix the problem")
 config = get_config()
 config_file_path = "./jirc/jirc/config.json"
 jira_server = {'server': config["jira_server"]}
