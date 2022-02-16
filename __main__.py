@@ -12,7 +12,7 @@ def main():
         main()
     else:
         create_card(
-            issue_type=jira_project.issueTypes[int(issue_or_project)].name)
+            issue_id=jira_project.issueTypes[int(issue_or_project)].id)
 
 
 if __name__ == "__main__":

@@ -28,11 +28,13 @@ def get_jira_projects():
     return jira.project(config["jira_project"])
 
 
-def create_card(issue_type):
+def create_card(issue_id):
     issue_dict = {
         "project": config["jira_project"],
         "summary": input('Card Title: '),
-        "issuetype": issue_type
+        "issuetype": {
+            "id": issue_id
+        }
     }
     new_issue = jira.create_issue(fields=issue_dict)
     jira_card_url = new_issue.permalink()
