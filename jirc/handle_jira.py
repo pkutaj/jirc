@@ -2,6 +2,7 @@ from jirc.logger import print_JIRA_project
 from jirc.handle_config_file import get_config
 import json
 from pprint import pprint as pp
+import settings
 import sys
 import webbrowser
 try:
@@ -11,7 +12,6 @@ except ImportError as e:
     sys.exit("\tYou ran into the problem of importing the required Jira module.\n"
              "\tRunning >>> pip install -r requirements.txt <<< can fix the problem")
 config = get_config()
-config_file_path = "./jirc/jirc/config.json"
 jira_server = {'server': config["jira_server"]}
 jira = JIRA(options=jira_server, basic_auth=(
     config["jira_user"], config["jira_token"]))
@@ -19,7 +19,7 @@ jira = JIRA(options=jira_server, basic_auth=(
 
 def change_jira_project():
     config["jira_project"] = input("Enter Jira Project Name:")
-    with open(config_file_path, mode="wt", encoding="utf-8") as config_file:
+    with open(settings.config_file_path, mode="wt", encoding="utf-8") as config_file:
         json.dump(config, config_file)
 
 
