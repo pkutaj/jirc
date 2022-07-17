@@ -15,10 +15,17 @@ config = get_config()
 jira_server = {'server': config["jira_server"]}
 jira = JIRA(options=jira_server, basic_auth=(
     config["jira_user"], config["jira_token"]))
+project_ids = sorted([i.key for i in jira.projects()])
 
 
 def change_jira_project():
-    config["jira_project"] = input("Enter Jira Project Name:")
+    new_project_id = input("Enter Jira Project Name:")
+    if new_project_id in project_ids:
+        config["jira_project"] = new_project_id
+    else:
+        print("~~> Wrong Input. Select one of the following:")
+        print(project_ids)
+        change_jira_project()
     with open(settings.config_file_path, mode="wt", encoding="utf-8") as config_file:
         json.dump(config, config_file)
 
