@@ -7,6 +7,7 @@ import sys
 import webbrowser
 try:
     from jira import JIRA
+    from jira import exceptions
 except ImportError as e:
     print(e, file=sys.stderr)
     sys.exit("\tYou ran into the problem of importing the required Jira module.\n"
@@ -43,7 +44,15 @@ def create_card(issue_id):
             "id": issue_id
         }
     }
-    new_issue = jira.create_issue(fields=issue_dict)
+    try:
+        new_issue = jira.create_issue(fields=issue_dict)
+    except exceptions.JIRAError:
+        print("\t~~> This did NOT work for Jira-speficic reasons.")
+        print("\t~~> A typical scenario is a missing required fields - Can't fix this for you, sorry!")
+        if input("Do you want to open Jira in browser now? (y/N): ") == "y":
+            webbrowser.open(
+                f'{config["jira_server"]}/browse/{config["jira_project"]}')
+        sys.exit("Bye!")
     jira_card_url = new_issue.permalink()
     del(issue_dict["project"], issue_dict["issuetype"])
     issue_dict["url"] = jira_card_url
