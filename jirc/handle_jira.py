@@ -2,7 +2,7 @@ from jirc.logger import print_JIRA_project
 from jirc.handle_config_file import get_config
 import json
 from pprint import pprint as pp
-import settings
+from settings import *
 import sys
 import webbrowser
 try:
@@ -27,7 +27,7 @@ def change_jira_project():
         print("~~> Wrong Input. Select one of the following:")
         print(project_ids)
         change_jira_project()
-    with open(settings.config_file_path, mode="wt", encoding="utf-8") as config_file:
+    with open(config_file_path, mode="wt", encoding="utf-8") as config_file:
         json.dump(config, config_file)
 
 

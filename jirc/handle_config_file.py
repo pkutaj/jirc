@@ -1,7 +1,7 @@
 import json
 import os
 import sys
-import settings
+from settings import *
 config_file_template = {
     "jira_server": None,
     "jira_user": None,
@@ -11,7 +11,7 @@ config_file_template = {
 
 
 def create_config():
-    with open(settings.config_file_path, mode="wt", encoding="utf-8") as config_file:
+    with open(config_file_path, mode="wt", encoding="utf-8") as config_file:
         config_file_template["jira_server"] = input("Jira server:")
         config_file_template["jira_user"] = input("Jira user:")
         config_file_template["jira_token"] = input("Jira token:")
@@ -20,8 +20,8 @@ def create_config():
 
 
 def get_config():
-    if os.path.exists(settings.config_file_path):
-        with open(settings.config_file_path) as config:
+    if os.path.exists(config_file_path):
+        with open(config_file_path) as config:
             return json.load(config)
     else:
         print("\t~~> missing Jira connection settings, please populate")
