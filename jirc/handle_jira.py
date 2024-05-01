@@ -5,17 +5,20 @@ from pprint import pprint as pp
 from settings import *
 import sys
 import webbrowser
+
 try:
     from jira import JIRA
     from jira import exceptions
 except ImportError as e:
     print(e, file=sys.stderr)
-    sys.exit("\tYou ran into the problem of importing the required Jira module.\n"
-             "\tRunning >>> pip install -r requirements.txt <<< can fix the problem")
+    sys.exit(
+        "\tYou ran into the problem of importing the required Jira module.\n"
+        "\tRunning >>> pip install -r requirements.txt <<< can fix the problem"
+    )
+
 config = get_config()
-jira_server = {'server': config["jira_server"]}
-jira = JIRA(options=jira_server, basic_auth=(
-    config["jira_user"], config["jira_token"]))
+jira_server = {"server": config["jira_server"]}
+jira = JIRA(options=jira_server, basic_auth=(config["jira_user"], config["jira_token"]))
 project_ids = sorted([i.key for i in jira.projects()])
 
 
@@ -39,24 +42,22 @@ def get_jira_projects():
 def create_card(issue_id):
     issue_dict = {
         "project": config["jira_project"],
-        "summary": input('Card Title: '),
-        "issuetype": {
-            "id": issue_id
-        }
+        "summary": input("Card Title: "),
+        "issuetype": {"id": issue_id},
     }
     try:
         new_issue = jira.create_issue(fields=issue_dict)
     except exceptions.JIRAError:
         print("\t~~> This did NOT work for Jira-speficic reasons.")
-        print("\t~~> A typical scenario is a missing required fields - Can't fix this for you, sorry!")
+        print(
+            "\t~~> A typical scenario is a missing required fields - Can't fix this for you, sorry!"
+        )
         if input("Do you want to open Jira in browser now? (y/N): ") == "y":
-            webbrowser.open(
-                f'{config["jira_server"]}/browse/{config["jira_project"]}')
+            webbrowser.open(f'{config["jira_server"]}/browse/{config["jira_project"]}')
         sys.exit("Bye!")
     jira_card_url = new_issue.permalink()
-    del(issue_dict["project"], issue_dict["issuetype"])
+    del (issue_dict["project"], issue_dict["issuetype"])
     issue_dict["url"] = jira_card_url
     issue_dict["key"] = new_issue.key
     pp(issue_dict)
-    if (input("Browser? (y/N):")) == ("y" or "Y"):
-        webbrowser.open(jira_card_url)
+    webbrowser.open(jira_card_url)
